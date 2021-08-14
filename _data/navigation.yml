@@ -1,12 +1,14 @@
 # main links
 main:
-    - title: "Home"
-      url: https://rlatjdgns7.github.io/
     - title: "Category"
       url: /categories/  
+    - title: "Home"
+      url: https://rlatjdgns7.github.io/
   #- title: "Sample Posts"
   #    url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+      
+  
