@@ -101,13 +101,13 @@ analytics:
 
 # Site Author
 author:
-  name             : "죽는건 그렇게 나쁜게 아님 아마도"
+  name             : "띵상가"
   avatar           : "./assets/images/pike.jpg"
   bio              : "나만의 작고 소듕한 코딩노트"
   location         : "Somewhere"
   email            :
   links:
-    - label: "Email"
+    - label: "Email"  
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
     - label: "Website"
