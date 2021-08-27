@@ -107,7 +107,7 @@ Queue : 대기실과 Stack을 연결 시키는 통로 stack이 비어있을 때�
  
   * Math.floor(Math.random()*100)+1 : 1에서 100사이의 숫자를 뽑습니다.
  
-  * Math.max() : 괄호안에 있는 숫자들 중 최댓값을 고릅니다.
+  * Math.max() : 괄호안에 있는 숫자들 중 최댓값을 고릅니다, arr를 넣고 싶을 떄는 Math.max(...arr);
  
   * Math.min() : 괄호안에 있는 숫자들 중 최솟값을 고릅니다.
  
@@ -265,6 +265,25 @@ funcExpression(); // 'A function expression'
   <img src="/assets/fu1.png">
   <img src="/assets/fu.png">
 
+  재귀용법(recursive) : 자신을 정의할 때 자기자신을 재참조하는 경우
+
+  > const fs = require('fs');
+const input = fs.readFileSync('/dev/stdin').toString().split('\n');
+
+let paraMeter = input[1].split(" ").map(x => Number(x));
+let max = paraMeter[0];
+let min = paraMeter[0];
+
+for(let i = 0; i < +input[0]; i++) {
+  if(max < paraMeter[i]){
+       max = paraMeter[i]
+  }
+  if(min > paraMeter[i]){
+       min = paraMeter[i]
+  }
+}
+console.log(`${min} ${max}`); 
+
   ## OBJECT
   > 책이 종이와 잉크로 구성되듯 자동차가 엔진,유리,알류미늄 등으로 구성되듯
 
@@ -285,13 +304,18 @@ funcExpression(); // 'A function expression'
   }
 
 
- * for of : 각각의 고유한 특성의 값을 실행할 명령과 함께 사용자 지엉 반복 후크를  호출하여 반복 가능한 객체(배열,map,set,인수)를 통해 반복하는 루트를 만듭니다.
-  
-   > var testVersion = [1,2,3];
+ * for of : 각각의 고유한 특성의 값을 실행할 명령과 함께 사용자 지정 반복 후크를  호출하여 반복 가능한 객체(배열,map,set,인수)를 통해 반복하는 루트를 만듭니다.
+    
+  > const array1 = ['a', 'b', 'c'];
 
-   for (var value in testVersion) {
-     console.log(value);
-   } // 1,2,3
+    for (const element of array1) {
+      console.log(element);
+    }
+
+    // expected output: "a"
+    // expected output: "b"
+    // expected output: "c"
+
 
   * for in 반복문과 for of 반복문의 차이 :
   for in : 객체의 모든 열거 가능한 속성에 대해서 반복
@@ -327,12 +351,25 @@ funcExpression(); // 'A function expression'
 
   * .push(): 배열 끝에 추가한다.
   * .pop() : 배열 끝 요소 제거
-  * .shift,unshift() : 배열 앞에 추가 제거
+  * .shift : 배열 앞에 추가 제거
   * .push, unshift() : 여러개를 추가 할 수 있다.
   * .splice(n,m) : n부터 m개의 특정 요소 지움
   * .splice() : 삭제된 요소 반환
   * .concat(arr,arr) : 합쳐서 새배열 반환
+  * indexOf() 메서드는 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스를 반환하고 존재하지 않으면 -1을 반환
   * .forEach(fn) : 배열 반복
+  > let input = [1,2,3,4,5,6,7,8,9,10];
+    let arr = []
+
+    input.forEach(x => {
+        let num = x % 42;
+
+    if(arr.indexOf(num) === -1) {  // indexOf는 없으면 -1을 반환한다.
+        arr.push(num);
+    }
+    });
+
+console.log(arr.length);
   * .includes() : 포함하는지 찾기
   * .find(fn) : 찾기 
   * .findindex(fn) : 찾기 object
@@ -340,12 +377,12 @@ funcExpression(); // 'A function expression'
   * .reverse
   * .map(fn) : fn을 받아 특정기능을 시행하고 새로운 배열 반환
   * join : 배열 합치기
-  * .split : string을 나눠서 배열로
   * .sort() 배열을 정렬한다 단 문자열로 배열하므로 숫자는 원하는 결과 값을 얻지 못할 수 있는데 그럴때는 코드를 이렇게 작성해보자
   > const points = [40, 100, 1, 5, 25, 10];
     points.sort(function(a, b){return a - b}); 
   이함수는 배열의 모든 element를 비교한다 
 
+    * .split : string을 나눠서 배열로
     separator Optional
     원본 문자열을 끊어야 할 부분을 나타내는 문자열을 나타냅니다. 실제 문자열이나 정규표현식을 받을 수 있습니다. 문자열 유형의 separator가 두 글자 이상일 경우 그 부분 문자열 전체가 일치해야 끊어집니다. separator가 생략되거나 str에 등장하지 않을 경우, 반환되는 배열은 원본 문자열을 유일한 원소로 가집니다. separator가 빈 문자열일 경우 str의 각각의 문자가 배열의 원소 하나씩으로 변환됩니다.
     limit Optional
@@ -355,7 +392,24 @@ funcExpression(); // 'A function expression'
       var splits = myString.split(' ', 3);
 
       console.log(splits);
-  * .reduce() : parameter로 fn을 받는다. 누적 계산값, 현재값
+  
+  * .reduce() : 리듀서 함수는 네개의 인자를 가집니다.   
+                - 누산기(acc);
+                - 현재 값(cur);
+                - 현재 인덱스(idx);
+                - 원본 배열(src);
+     reducer()는 빈 요소를 제외하고 배열 내에 존재하는 각 요소에 대해 callback 함수를 행
+     하는데, 콜백 함수는 다음의 네 인수를 받습니다.
+
+     * accumulator : 콜백의 반환 값을 누적합니다. 콜백의 첫 번쨰 호출이면서 initialValue를 제공한 경우 intailValue의 값
+     * currentValue : 처리할 현재 요소.
+     * currentIndex (optional) 처리할 현재 요소의 인덱스 initialValue를 제공한 경우 0 아니면 1부터
+     * array   (optional)
+     * intialValue (optional)  : 이것을 제공하지 않으면 인덱스 1부터 시작해 콜백 함수를 실행합니다.  
+
+     콜백의 최초 호출 떄 accumulator와 currentValue는 다음 두 가지 값중 하나를 가집니다.
+     만약 reduce()함수 호출에서 initialValue를 제공한 경우, accumlator는 initialValue와 같고
+     currentValue는 배열의 첫 번째 값과 같습니다. 
 
   ## this
   자바스크립트에서 모든 함수는 실행될 때마다 함수 내부에 this라는 객체가 추가된다. arguments라는 유사 배열 객체와 함께 함수 내부로 암묵적으로 전달되는 것이다. 그렇기 때문에 자바스크립트에서의 this는 함수가 호출된 상황에 따라 그 모습을 달리한다.
