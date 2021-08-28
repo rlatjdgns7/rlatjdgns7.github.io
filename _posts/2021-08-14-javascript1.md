@@ -84,6 +84,8 @@ Queue : 대기실과 Stack을 연결 시키는 통로 stack이 비어있을 때�
 
   * "a".codePointAt() : 아스키 코드표를 통해 숫자 받기
 
+  * String.fromCharCode() : 숫자를 아스키 코드로 변환
+
 
 
 2. Number : 숫자형, 사칙연산이 가능하다, Nan은(not a number)라는 뜻이다.
@@ -117,6 +119,8 @@ Queue : 대기실과 Stack을 연결 시키는 통로 stack이 비어있을 때�
  
   * Math.squart() : 제곱근
 
+
+
 3. boolean : true or false
 
 4. undefined or null
@@ -149,6 +153,7 @@ Queue : 대기실과 Stack을 연결 시키는 통로 stack이 비어있을 때�
  assignmentd var를 decleration형태로 쓴다면 
  += or -=는 계산후 숫자를 반환
  -- or ++는 1을 빼거나 더함
+ 
 
  > let input = require('fs').readFileSync('dev/stdin').toString().split(' ');
 
@@ -184,7 +189,8 @@ console.log(num1 + ' ' + num2);
  * IF문
  * else if
  * Else는 if문의 조건이 false일때 실행된다.
-
+ * 조건부 삼항연산자 : 조건문 ? 선택문1 : 선택문2 
+   조건이 맞을 떄 ? 조건을 충족하지 못했을 때 :
  <img src="/assets/if.png">
 
 
@@ -369,6 +375,8 @@ console.log(`${min} ${max}`);
     }
     });
 
+  
+
 console.log(arr.length);
   * .includes() : 포함하는지 찾기
   * .find(fn) : 찾기 
@@ -410,6 +418,8 @@ console.log(arr.length);
      콜백의 최초 호출 떄 accumulator와 currentValue는 다음 두 가지 값중 하나를 가집니다.
      만약 reduce()함수 호출에서 initialValue를 제공한 경우, accumlator는 initialValue와 같고
      currentValue는 배열의 첫 번째 값과 같습니다. 
+
+     
 
   ## this
   자바스크립트에서 모든 함수는 실행될 때마다 함수 내부에 this라는 객체가 추가된다. arguments라는 유사 배열 객체와 함께 함수 내부로 암묵적으로 전달되는 것이다. 그렇기 때문에 자바스크립트에서의 this는 함수가 호출된 상황에 따라 그 모습을 달리한다.
