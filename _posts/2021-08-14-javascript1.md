@@ -222,7 +222,6 @@ console.log(num1 + ' ' + num2);
    2,2
 
 > const a = [3]
-
   switch (3) {
   case 3:
     console.log("hi")
